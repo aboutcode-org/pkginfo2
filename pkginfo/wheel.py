@@ -35,7 +35,7 @@ class Wheel(Distribution):
             def read_file(name):
                 return open(name).read()
 
-            close = lambda : 0
+            close = lambda : None
 
         else:
             raise ValueError('Not a known wheel archive format or installed .dist-info: %s' % fqn)
