@@ -199,7 +199,7 @@ class JSON(Base):
             self._mapping[field] = value
 
     def finish(self):
-        json.dump(self._mapping, sys.stdout, indent=2, encoding='utf-8')
+        json.dump(self._mapping, sys.stdout, indent=2)
 
 _FORMATTERS = {
     'simple': Simple,
