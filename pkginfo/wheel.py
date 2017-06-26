@@ -33,7 +33,8 @@ class Wheel(Distribution):
             names = [os.path.join(fqn, p) for p in os.listdir(fqn)]
 
             def read_file(name):
-                return open(name).read()
+                with open(name) as inf:
+                    return inf.read()
 
             close = lambda : None
 
