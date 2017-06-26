@@ -26,8 +26,20 @@ class Wheel(Distribution):
 
             def read_file(name):
                 return archive.read(name)
+
+            close = archive.close
+
+        elif fqn.endswith('.dist-info'):
+            names = [os.path.join(fqn, p) for p in os.listdir(fqn)]
+
+            def read_file(name):
+                with open(name) as inf:
+                    return inf.read()
+
+            close = lambda : None
+
         else:
-            raise ValueError('Not a known archive format: %s' % fqn)
+            raise ValueError('Not a known wheel archive format or installed .dist-info: %s' % fqn)
 
         try:
             tuples = [x.split('/') for x in names if 'METADATA' in x]
@@ -38,7 +50,7 @@ class Wheel(Distribution):
                 if b'Metadata-Version' in data:
                     return data
         finally:
-            archive.close()
+            close()
 
         raise ValueError('No METADATA in archive: %s' % fqn)
 

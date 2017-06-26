@@ -1,0 +1,10 @@
+*.py[cod]
+*.egg-info
+./build
+./dist
+.coverage
+__pycache__
+.tox
+coverage.xml
+nosetests.xml
+docs/_build
