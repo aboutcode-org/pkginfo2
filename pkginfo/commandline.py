@@ -194,6 +194,8 @@ class JSON(Base):
             value = getattr(meta, field)
             if value and not isinstance(value, (tuple, list)):
                 value = str(value)
+            if field in self._mapping:
+                raise ValueError('Duplicate field: %(field)r' % locals())
             self._mapping[field] = value
 
     def finish(self):
