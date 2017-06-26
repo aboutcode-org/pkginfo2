@@ -1,24 +1,16 @@
 import glob
 import os
 import sys
+from types import ModuleType
 import warnings
 
 from pkginfo.distribution import Distribution
-from pkginfo._compat import STRING_TYPES
 
 class Installed(Distribution):
 
     def __init__(self, package, metadata_version=None):
-        if isinstance(package, STRING_TYPES):
-            self.package_name = package
-            try:
-                __import__(package)
-            except ImportError:
-                package = None
-            else:
-                package = sys.modules[package]
-        else:
-            self.package_name = package.__name__
+        assert isinstance(package, ModuleType)
+        self.package_name = package.__name__
         self.package = package
         self.metadata_version = metadata_version
         self.extractMetadata()
