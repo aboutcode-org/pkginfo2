@@ -19,9 +19,11 @@ README = open(os.path.join(here, 'README.txt')).read()
 CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 setup(
-    name='pkginfo',
-    version='1.5.1.dev0',
-    description='Query metadatdata from sdists / bdists / installed packages.',
+    name='pkginfo2',
+    version='1.5.1.patch1',
+    description='Query metadatdata from sdists / bdists / installed packages.'
+        ' This is a patched version that does not do unsecure imports.'
+        ' See https://bugs.launchpad.net/pkginfo/+bug/1700620 or details',
     platforms=['Unix', 'Windows'],
     long_description='\n\n'.join([README, CHANGES]),
     keywords='distribution sdist installed metadata',
