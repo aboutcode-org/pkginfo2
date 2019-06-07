@@ -1,10 +1,50 @@
 ``pkginfo`` Changelog
 =====================
 
+1.5.1 (unreleased)
+------------------
+
+- TBD
+
+1.5.0.1 (2019-01-08)
+--------------------
+
+- Fix broken 'sdist'.  LP #1639585.
+
+1.5.0 (2019-01-07)
+------------------
+
+- Fix 'console_scripts' entry point syntax.  LP #1810734.
+
+- Add support for JSON output from the CLI.  LP #1700580.
+
+- Add support for installed wheels.  E.g., 'dist-info/' dirs.  LP #1700200.
+
+- Harden metadata extraction against unexpected encodings.  LP #1780454.
+
+- Update tests to match pip/setuptools' use of new metadata version.
+  LP #1772274.
+
+- Add support for Python 3.6 and 3.7.
+
+- Drop support for Python 3.3.
+
+1.4.2 (2018-03-14)
+------------------
+
+- Use relative imports in pkginfo modules.  Supports vendoring of the
+  package into setuptools.
+
+- Add support for ``Provides-Extra`` and ``Description-Content-Type`` fields.
+  Per https://packaging.python.org/specifications/.  See:  PEP 566.
+
+- Remove support for old setuptools leaving ``PKG-INFO`` in the root of
+  the project directory.
+
 1.4.1 (2016-11-07)
 ------------------
 
-- Packaging only change (invalid sdist bulit for 1.4.0).
+- Packaging only change (invalid sdist built for 1.4.0).
 
 1.4.0 (2016-11-04)
 ------------------
