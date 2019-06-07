@@ -9,15 +9,16 @@ from ._compat import STRING_TYPES
 
 class Installed(Distribution):
 
-    def __init__(self, package, metadata_version=None):
+    def __init__(self, package, metadata_version=None, live_import=False):
         if isinstance(package, STRING_TYPES):
             self.package_name = package
-            try:
-                __import__(package)
-            except ImportError:
-                package = None
-            else:
-                package = sys.modules[package]
+            if live_import:
+                try:
+                    __import__(package)
+                except ImportError:
+                    package = None
+                else:
+                    package = sys.modules[package]
         else:
             self.package_name = package.__name__
         self.package = package
