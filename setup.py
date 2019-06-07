@@ -19,7 +19,7 @@ README = open(os.path.join(here, 'README.txt')).read()
 CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 setup(
-    name='pkginfo',
+    name='pkginfo2',
     version='1.5.1.patch1',
     description='Query metadatdata from sdists / bdists / installed packages.'
         ' This is a patched version that does not do unsecure imports.'
