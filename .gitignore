@@ -8,3 +8,4 @@ __pycache__
 coverage.xml
 nosetests.xml
 docs/_build
+/tmp/
