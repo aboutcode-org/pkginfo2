@@ -1,8 +1,9 @@
+import io
 import os
 import sys
 import warnings
 
-from pkginfo.distribution import Distribution
+from .distribution import Distribution
 
 def _gather_py2(top, candidates): #pragma NO COVER Py3k
     def _filter(candidates, dirname, fnames):
@@ -40,6 +41,6 @@ class Develop(Distribution):
         for candidate in candidates:
             path = os.path.join(candidate, 'PKG-INFO')
             if os.path.exists(path):
-                with open(path) as f:
+                with io.open(path, errors='ignore') as f:
                     return f.read()
         warnings.warn('No PKG-INFO found for path: %s' % self.path)

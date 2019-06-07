@@ -1,10 +1,11 @@
 import glob
+import io
 import os
 import sys
 import warnings
 
-from pkginfo.distribution import Distribution
-from pkginfo._compat import STRING_TYPES
+from .distribution import Distribution
+from ._compat import STRING_TYPES
 
 class Installed(Distribution):
 
@@ -48,6 +49,6 @@ class Installed(Distribution):
                     else:
                         path = candidate
                     if os.path.exists(path):
-                        with open(path) as f:
+                        with io.open(path, errors='ignore') as f:
                             return f.read()
         warnings.warn('No PKG-INFO found for package: %s' % self.package_name)
