@@ -1,10 +1,17 @@
 ``pkginfo`` Changelog
 =====================
 
-1.5.1 (unreleased)
+1.6.0 (unreleased)
 ------------------
 
-- TBD
+- Add support for Python 3.8.
+  LP #1869854.
+
+- Drop support for Python 3.4.
+
+- Update tests to match setuptools' change, no longer reporting metadata
+  version for installed packages w/o explicit metadata.
+  LP #1870197.
 
 1.5.0.1 (2019-01-08)
 --------------------
