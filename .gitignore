@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 *.py[cod]
+=======
+>>>>>>> refs/remotes/bzr-import/master
 *.egg-info
 ./build
 ./dist

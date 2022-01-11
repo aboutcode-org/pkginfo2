@@ -1,7 +1,50 @@
 ``pkginfo`` Changelog
 =====================
 
-1.6.0 (unreleased)
+1.8.2 (2021-12-01)
+------------------
+
+- Add fix for installed distributions with '__package__' set to an empty
+  string. LP #1952946.
+
+1.8.1 (2021-11-19)
+------------------
+
+- Add 'MANIFEST.in' to ensure example files used by tests are included
+  in source distributions.  LP #1951553.
+
+1.8.0 (2021-11-18)
+------------------
+
+- Support new standard metadata location for installed dists. LP #1865286.
+
+- Don't overwrite header-based 'description' with empty payload. LP #1885458.
+
+- Add support for Metadata-Version 2.2. LP #1928729.
+
+- Add support for uncompressed tarballs for sdists.  LP #1951457.
+
+- Add support for Python 3.10.
+
+1.7.1 (2021-07-09)
+------------------
+
+- Use Python3 to build docs, and fix doctest examples to use Python3-
+  compatible syntax.  LP #1933322.
+
+1.7.0 (2021-01-16)
+------------------
+
+- Add support for Python 3.9.
+
+- Drop support for Python 3.5.
+
+1.6.1 (2020-10-26)
+------------------
+
+- Adjust test classifiers to match supported Python versions. LP #1901127.
+
+1.6.0 (2020-10-20)
 ------------------
 
 - Add support for Python 3.8.
@@ -10,8 +53,7 @@
 - Drop support for Python 3.4.
 
 - Update tests to match setuptools' change, no longer reporting metadata
-  version for installed packages w/o explicit metadata.
-  LP #1870197.
+  version for installed packages w/o explicit metadata.  LP #1870197.
 
 1.5.0.1 (2019-01-08)
 --------------------
