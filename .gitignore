@@ -11,3 +11,4 @@ __pycache__
 coverage.xml
 nosetests.xml
 docs/_build
+/venv/
