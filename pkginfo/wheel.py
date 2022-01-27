@@ -1,46 +1,49 @@
 import io
 import os
-import tarfile
 import zipfile
 
-from .distribution import Distribution
 
-class SDist(Distribution):
+from .distribution import Distribution
+from .distribution import must_decode
+from .distribution import parse
+
+
+class Wheel(Distribution):
 
     def __init__(self, filename, metadata_version=None):
         self.filename = filename
         self.metadata_version = metadata_version
         self.extractMetadata()
 
-    @classmethod
-    def _get_archive(cls, fqn):
+    def read(self):
+        fqn = os.path.abspath(os.path.normpath(self.filename))
         if not os.path.exists(fqn):
             raise ValueError('No such file: %s' % fqn)
 
-        if zipfile.is_zipfile(fqn):
+        if fqn.endswith('.whl'):
             archive = zipfile.ZipFile(fqn)
             names = archive.namelist()
+
             def read_file(name):
                 return archive.read(name)
-        elif tarfile.is_tarfile(fqn):
-            archive = tarfile.TarFile.open(fqn)
-            names = archive.getnames()
+
+            close = archive.close
+
+        elif fqn.endswith('.dist-info'):
+            names = [os.path.join(fqn, p) for p in os.listdir(fqn)]
+
             def read_file(name):
-                return archive.extractfile(name).read()
+                with io.open(name, mode='rb') as inf:
+                    return inf.read()
+
+            close = lambda : None
+
         else:
-            raise ValueError('Not a known archive format: %s' % fqn)
-
-        return archive, names, read_file
-
-
-    def read(self):
-        fqn = os.path.abspath(
-                os.path.normpath(self.filename))
-
-        archive, names, read_file = self._get_archive(fqn)
+            raise ValueError('Not a known wheel archive format or '
+                             'installed .dist-info: %s' % fqn)
 
         try:
-            tuples = [x.split('/') for x in names if 'PKG-INFO' in x]
+            tuples = [x.split('/') for x in names if 'METADATA' in x]
             schwarz = sorted([(len(x), x) for x in tuples])
             for path in [x[1] for x in schwarz]:
                 candidate = '/'.join(path)
@@ -48,28 +51,13 @@ class SDist(Distribution):
                 if b'Metadata-Version' in data:
                     return data
         finally:
-            archive.close()
+            close()
 
-        raise ValueError('No PKG-INFO in archive: %s' % fqn)
+        raise ValueError('No METADATA in archive: %s' % fqn)
 
-
-class UnpackedSDist(SDist):
-    def __init__(self, filename, metadata_version=None):
-        if os.path.isdir(filename):
-            pass
-        elif os.path.isfile(filename):
-            filename = os.path.dirname(filename)
-        else:
-            raise ValueError('No such file: %s' % filename)
-
-        super(UnpackedSDist, self).__init__(
-                filename, metadata_version=metadata_version)
-
-    def read(self):
-        try:
-            pkg_info = os.path.join(self.filename, 'PKG-INFO')
-            with io.open(pkg_info, errors='ignore') as f:
-                return f.read()
-        except Exception as e:
-            raise ValueError('Could not load %s as an unpacked sdist: %s'
-                                % (self.filename, e))
+    def parse(self, data):
+        super(Wheel, self).parse(data)
+        fp = io.StringIO(must_decode(data))
+        msg = parse(fp)
+        if self.description is None:
+            self.description = msg.get_payload()

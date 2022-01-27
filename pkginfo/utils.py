@@ -24,16 +24,6 @@ def get_metadata(path_or_module, metadata_version=None):
         except (ValueError, IOError): #pragma NO COVER
             pass
 
-    try:
-        __import__(path_or_module)
-    except ImportError:
-        pass
-    else:
-        try:
-            return Installed(path_or_module, metadata_version)
-        except (ValueError, IOError): #pragma NO COVER
-            pass
-
     if os.path.isfile(path_or_module):
         try:
             return SDist(path_or_module, metadata_version)
