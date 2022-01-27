@@ -7,9 +7,9 @@ def _checkSample(testcase, installed):
     except ImportError: # no setuptools :(
         pass
     else:
-        version = pkg_resources.require('pkginfo')[0].version
+        version = pkg_resources.require('pkginfo2')[0].version
         testcase.assertEqual(installed.version, version)
-    testcase.assertEqual(installed.name, 'pkginfo')
+    testcase.assertEqual(installed.name, 'pkginfo2')
     testcase.assertEqual(installed.keywords,
                         'distribution sdist installed metadata' )
     testcase.assertEqual(list(installed.supported_platforms), [])
@@ -20,7 +20,6 @@ def _checkClassifiers(testcase, installed):
       'Intended Audience :: Developers',
       'License :: OSI Approved :: MIT License',
       'Operating System :: OS Independent',
-      'Programming Language :: Python :: 2.7',
       'Programming Language :: Python :: 3.6',
       'Programming Language :: Python :: 3.7',
       'Programming Language :: Python :: 3.8',

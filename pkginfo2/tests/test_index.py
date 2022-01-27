@@ -3,7 +3,7 @@ import unittest
 class IndexTests(unittest.TestCase):
 
     def _getTargetClass(self):
-        from pkginfo.index import Index
+        from pkginfo2.index import Index
         return Index
 
     def _makeOne(self):
@@ -17,7 +17,7 @@ class IndexTests(unittest.TestCase):
         self.assertEqual(len(index.items()), 0)
 
     def _makeDummy(self):
-        from pkginfo.distribution import Distribution
+        from pkginfo2.distribution import Distribution
         class DummyDistribution(Distribution):
             name = 'dummy'
             version = '1.0'

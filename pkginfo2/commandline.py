@@ -210,7 +210,7 @@ _FORMATTERS = {
 }
 
 def main(args=None):
-    """Entry point for pkginfo tool
+    """Entry point for pkginfo2 tool
     """
     options, paths = _parse_options(args)
     format = getattr(options, 'output', 'simple')

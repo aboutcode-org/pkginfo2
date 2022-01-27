@@ -5,7 +5,7 @@ import unittest
 class SDistTests(unittest.TestCase):
 
     def _getTargetClass(self):
-        from pkginfo.sdist import SDist
+        from pkginfo2.sdist import SDist
         return SDist
 
     def _makeOne(self, filename=None, metadata_version=None):
@@ -116,7 +116,7 @@ class UnpackedMixin(object):
         super(UnpackedMixin, self).tearDown()
 
     def _getTargetClass(self):
-        from pkginfo.sdist import UnpackedSDist
+        from pkginfo2.sdist import UnpackedSDist
         return UnpackedSDist
 
     def _getTopDirectory(self):

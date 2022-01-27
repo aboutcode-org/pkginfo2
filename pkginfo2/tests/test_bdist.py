@@ -3,7 +3,7 @@ import unittest
 class BDistTests(unittest.TestCase):
 
     def _getTargetClass(self):
-        from pkginfo.bdist import BDist
+        from pkginfo2.bdist import BDist
         return BDist
 
     def _makeOne(self, filename=None, metadata_version=None):

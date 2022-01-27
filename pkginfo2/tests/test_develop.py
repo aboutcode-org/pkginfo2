@@ -3,14 +3,14 @@ import unittest
 class DevelopTests(unittest.TestCase):
 
     def _getTargetClass(self):
-        from pkginfo.develop import Develop
+        from pkginfo2.develop import Develop
         return Develop
 
     def _makeOne(self, dirname=None):
         return self._getTargetClass()(dirname)
 
     def test_ctor_w_path(self):
-        from pkginfo.tests import _checkSample
+        from pkginfo2.tests import _checkSample
         develop = self._makeOne('.')
         _checkSample(self, develop)
 

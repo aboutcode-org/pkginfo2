@@ -3,7 +3,7 @@ import unittest
 class InstalledTests(unittest.TestCase):
 
     def _getTargetClass(self):
-        from pkginfo.installed import Installed
+        from pkginfo2.installed import Installed
         return Installed
 
     def _makeOne(self, filename=None, metadata_version=None):

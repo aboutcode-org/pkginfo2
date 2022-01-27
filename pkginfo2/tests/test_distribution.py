@@ -3,7 +3,7 @@ import unittest
 class DistributionTests(unittest.TestCase):
 
     def _getTargetClass(self):
-        from pkginfo.distribution import Distribution
+        from pkginfo2.distribution import Distribution
         return Distribution
 
     def _makeOne(self, metadata_version='1.0'):
@@ -59,12 +59,12 @@ class DistributionTests(unittest.TestCase):
         self.assertRaises(NotImplementedError, dist.read)
 
     def test_parse_given_unicode(self):
-        from pkginfo._compat import u
+        from pkginfo2._compat import u
         dist = self._makeOne()
         dist.parse(u('Metadata-Version: 1.0\nName: lp722928_c3')) # no raise
 
     def test_parse_Metadata_Version_1_0(self):
-        from pkginfo.distribution import HEADER_ATTRS_1_0
+        from pkginfo2.distribution import HEADER_ATTRS_1_0
         dist = self._makeOne(None)
         dist.parse('Metadata-Version: 1.0')
         self.assertEqual(dist.metadata_version, '1.0')
@@ -72,7 +72,7 @@ class DistributionTests(unittest.TestCase):
                          [x[1] for x in HEADER_ATTRS_1_0])
 
     def test_parse_Metadata_Version_1_1(self):
-        from pkginfo.distribution import HEADER_ATTRS_1_1
+        from pkginfo2.distribution import HEADER_ATTRS_1_1
         dist = self._makeOne(None)
         dist.parse('Metadata-Version: 1.1')
         self.assertEqual(dist.metadata_version, '1.1')
@@ -80,7 +80,7 @@ class DistributionTests(unittest.TestCase):
                          [x[1] for x in HEADER_ATTRS_1_1])
 
     def test_parse_Metadata_Version_1_2(self):
-        from pkginfo.distribution import HEADER_ATTRS_1_2
+        from pkginfo2.distribution import HEADER_ATTRS_1_2
         dist = self._makeOne(None)
         dist.parse('Metadata-Version: 1.2')
         self.assertEqual(dist.metadata_version, '1.2')
@@ -88,7 +88,7 @@ class DistributionTests(unittest.TestCase):
                          [x[1] for x in HEADER_ATTRS_1_2])
 
     def test_parse_Metadata_Version_2_1(self):
-        from pkginfo.distribution import HEADER_ATTRS_2_1
+        from pkginfo2.distribution import HEADER_ATTRS_2_1
         dist = self._makeOne(None)
         dist.parse('Metadata-Version: 2.1')
         self.assertEqual(dist.metadata_version, '2.1')
@@ -96,7 +96,7 @@ class DistributionTests(unittest.TestCase):
                          [x[1] for x in HEADER_ATTRS_2_1])
 
     def test_parse_Metadata_Version_2_2(self):
-        from pkginfo.distribution import HEADER_ATTRS_2_2
+        from pkginfo2.distribution import HEADER_ATTRS_2_2
         dist = self._makeOne(None)
         dist.parse('Metadata-Version: 2.2')
         self.assertEqual(dist.metadata_version, '2.2')

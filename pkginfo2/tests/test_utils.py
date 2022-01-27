@@ -3,7 +3,7 @@ import unittest
 class Test_get_metadata(unittest.TestCase):
 
     def _callFUT(self, path, metadata_version=None):
-        from pkginfo.utils import get_metadata
+        from pkginfo2.utils import get_metadata
         if metadata_version is not None:
             return get_metadata(path, metadata_version)
         return get_metadata(path)

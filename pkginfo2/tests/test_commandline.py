@@ -3,13 +3,13 @@ import unittest
 class Test__parse_options(unittest.TestCase):
 
     def _callFUT(self, args):
-        from pkginfo.commandline import _parse_options
+        from pkginfo2.commandline import _parse_options
         return _parse_options(args)
 
     def test_empty(self):
         import io
         import sys
-        from pkginfo.commandline import __doc__ as usage
+        from pkginfo2.commandline import __doc__ as usage
         firstline = usage.splitlines()[0]
 
         # parse_args emits "native" error output.
@@ -29,7 +29,7 @@ class Test__parse_options(unittest.TestCase):
 class BaseTests(unittest.TestCase):
 
     def _getTargetClass(self):
-        from pkginfo.commandline import Base
+        from pkginfo2.commandline import Base
         return Base
 
     def _makeOne(self, options):
@@ -66,7 +66,7 @@ class _FormatterBase(object):
 class SimpleTests(unittest.TestCase, _FormatterBase):
 
     def _getTargetClass(self):
-        from pkginfo.commandline import Simple
+        from pkginfo2.commandline import Simple
         return Simple
 
     def _makeOne(self, options):
@@ -100,7 +100,7 @@ class SimpleTests(unittest.TestCase, _FormatterBase):
 class SingleLineTests(unittest.TestCase, _FormatterBase):
 
     def _getTargetClass(self):
-        from pkginfo.commandline import SingleLine
+        from pkginfo2.commandline import SingleLine
         return SingleLine
 
     def _makeOne(self, options):
@@ -131,7 +131,7 @@ class SingleLineTests(unittest.TestCase, _FormatterBase):
 class CSVTests(unittest.TestCase, _FormatterBase):
 
     def _getTargetClass(self):
-        from pkginfo.commandline import CSV
+        from pkginfo2.commandline import CSV
         return CSV
 
     def _makeOne(self, options):
@@ -161,7 +161,7 @@ class CSVTests(unittest.TestCase, _FormatterBase):
 class INITests(unittest.TestCase, _FormatterBase):
 
     def _getTargetClass(self):
-        from pkginfo.commandline import INI
+        from pkginfo2.commandline import INI
         return INI
 
     def _makeOne(self, options):
@@ -199,7 +199,7 @@ class INITests(unittest.TestCase, _FormatterBase):
 class JSONtests(unittest.TestCase, _FormatterBase):
 
     def _getTargetClass(self):
-        from pkginfo.commandline import JSON
+        from pkginfo2.commandline import JSON
         return JSON
 
     def _makeOne(self, options):
@@ -255,8 +255,8 @@ class JSONtests(unittest.TestCase, _FormatterBase):
 class Test_main(unittest.TestCase):
 
     def _callFUT(self, args, monkey='simple'):
-        from pkginfo.commandline import main
-        from pkginfo.commandline import _FORMATTERS
+        from pkginfo2.commandline import main
+        from pkginfo2.commandline import _FORMATTERS
         before = _FORMATTERS[monkey]
         dummy = _Formatter()
         _FORMATTERS[monkey] = lambda *options: dummy
@@ -267,7 +267,7 @@ class Test_main(unittest.TestCase):
         return dummy
 
     def test_w_mising_dist(self):
-        from pkginfo import commandline as MUT
+        from pkginfo2 import commandline as MUT
         def _get_metadata(path_or_module, md_version):
             self.assertEqual(path_or_module, 'foo')
             self.assertEqual(md_version, None)
@@ -278,7 +278,7 @@ class Test_main(unittest.TestCase):
         self.assertTrue(formatter._finished)
 
     def test_w_dist_wo_download_url(self):
-        from pkginfo import commandline as MUT
+        from pkginfo2 import commandline as MUT
         meta = _Meta(download_url=None)
         def _get_metadata(path_or_module, md_version):
             self.assertEqual(path_or_module, '/path/to/foo')
@@ -292,7 +292,7 @@ class Test_main(unittest.TestCase):
         self.assertEqual(meta.download_url, 'http://example.com/foo')
 
     def test_w_dist_w_download_url(self):
-        from pkginfo import commandline as MUT
+        from pkginfo2 import commandline as MUT
         meta = _Meta(download_url='http://example.com/dist/foo')
         def _get_metadata(path_or_module, md_version):
             self.assertEqual(path_or_module, '/path/to/foo')

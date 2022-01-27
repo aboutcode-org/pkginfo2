@@ -3,7 +3,7 @@ import unittest
 class WheelTests(unittest.TestCase):
 
     def _getTargetClass(self):
-        from pkginfo.wheel import Wheel
+        from pkginfo2.wheel import Wheel
         return Wheel
 
     def _makeOne(self, filename=None, metadata_version=None):
