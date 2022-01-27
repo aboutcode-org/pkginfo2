@@ -1,39 +1,31 @@
 import os
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
-    extras = {}
-else:
-    extras = {
-        'test_suite': 'pkginfo.tests',
-        'zip_safe': False,
-        'extras_require': {
-            'testing': ['nose', 'coverage'],
-        },
-    }
+from setuptools import setup
+
+extras = {
+    'test_suite': 'pkginfo2.tests',
+    'zip_safe': False,
+}
 
 here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, 'README.txt')).read()
 CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 setup(
-    name='pkginfo',
-    version='1.8.2',
-    description='Query metadatdata from sdists / bdists / installed packages.',
+    name='pkginfo2',
+    version='30.0.0',
+    description='Query metadatdata from sdists / bdists / installed packages. Safer fork of pkginfo to avoid doing arbitrary imports and eval()',
     platforms=['Unix', 'Windows'],
     long_description='\n\n'.join([README, CHANGES]),
     keywords='distribution sdist installed metadata',
-    url='https://code.launchpad.net/~tseaver/pkginfo/trunk',
-    author='Tres Seaver, Agendaless Consulting',
+    url='https://github.com/nexB/pkginfo2',
+    author='Maintained by nexB, Inc. Authored by Tres Seaver, Agendaless Consulting',
     author_email='tseaver@agendaless.com',
     license='MIT',
     classifiers=[
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
@@ -46,9 +38,9 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'pkginfo = pkginfo.commandline:main',
+            'pkginfo2 = pkginfo.2commandline:main',
         ]
     },
-    packages=['pkginfo', 'pkginfo.tests'],
+    packages=['pkginfo2', 'pkginfo2.tests'],
     **extras
 )
