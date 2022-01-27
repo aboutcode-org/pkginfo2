@@ -108,40 +108,6 @@ class Test_get_metadata(unittest.TestCase):
         self._checkMyPackage(dist, filename)
         self._checkClassifiers(dist)
 
-    def test_w_module(self):
-        from pkginfo.tests import _defaultMetadataVersion
-        EXPECTED =  _defaultMetadataVersion()
-        import pkginfo
-        from pkginfo.tests import _checkSample
-        dist = self._callFUT(pkginfo)
-        self.assertEqual(dist.metadata_version, EXPECTED)
-        _checkSample(self, dist)
-
-    def test_w_module_and_metadata_version(self):
-        import pkginfo
-        from pkginfo.tests import _checkSample
-        from pkginfo.tests import _checkClassifiers
-        dist = self._callFUT(pkginfo, metadata_version='1.2')
-        self.assertEqual(dist.metadata_version, '1.2')
-        _checkSample(self, dist)
-        _checkClassifiers(self, dist)
-
-    def test_w_package_name(self):
-        from pkginfo.tests import _defaultMetadataVersion
-        EXPECTED =  _defaultMetadataVersion()
-        from pkginfo.tests import _checkSample
-        dist = self._callFUT('pkginfo')
-        self.assertEqual(dist.metadata_version, EXPECTED)
-        _checkSample(self, dist)
-
-    def test_w_package_name_and_metadata_version(self):
-        from pkginfo.tests import _checkSample
-        from pkginfo.tests import _checkClassifiers
-        dist = self._callFUT('pkginfo', metadata_version='1.2')
-        self.assertEqual(dist.metadata_version, '1.2')
-        _checkSample(self, dist)
-        _checkClassifiers(self, dist)
-
     def test_w_directory_no_EGG_INFO(self):
         import os
         import warnings
