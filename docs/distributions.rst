@@ -1,24 +1,24 @@
 Distribution Types
 ==================
 
-The fundamental abstraction provided by this pacakge is the ``Distribution``
+The fundamental abstraction provided by this package is the ``Distribution``
 base class.  Implementations exist for specific cases:  source distributions,
-binary distributions, installed pakcages, and development checkouts.
+binary distributions, installed packages, and development checkouts.
 
 .. doctest::
 
-  >>> from pkginfo import Distribution
-  >>> from pkginfo import SDist
+  >>> from pkginfo2 import Distribution
+  >>> from pkginfo2 import SDist
   >>> assert issubclass(SDist, Distribution)
-  >>> from pkginfo import UnpackedSDist
+  >>> from pkginfo2 import UnpackedSDist
   >>> assert issubclass(UnpackedSDist, SDist)
-  >>> from pkginfo import BDist
+  >>> from pkginfo2 import BDist
   >>> assert issubclass(BDist, Distribution)
-  >>> from pkginfo import Wheel
+  >>> from pkginfo2 import Wheel
   >>> assert issubclass(Wheel, Distribution)
-  >>> from pkginfo import Installed
+  >>> from pkginfo2 import Installed
   >>> assert issubclass(Installed, Distribution)
-  >>> from pkginfo import Develop
+  >>> from pkginfo2 import Develop
   >>> assert issubclass(Develop, Distribution)
 
 Introspecting Source Distributions
@@ -92,7 +92,7 @@ sdist is regenerated when pip installed. You can achieve this in your
 
   >>> from setuptools import dist, setup
   >>> dist.Distribution(dict(setup_requires='pkginfo'))
-  >>> from pkginfo import UnpackedSDist
+  >>> from pkginfo2 import UnpackedSDist
 
   >>> try:
   ...     d = UnpackedSDist(__file__)
@@ -130,24 +130,8 @@ After that, they have the same metadata as other ``Distribution`` objects,
 Introspecting Installed Packages
 --------------------------------
 
-``Installed`` objects are created from either a module object or its
-dotted name.  Note that this feature only works in Python 2.6 or later:
-earlier Python versions did not record ``PKG-INFO`` for installed packages.
-
-.. doctest::
-
-  >>> import sys
-  >>> if sys.version_info >= (2,6):
-  ...    dotted = Installed('pkginfo')
-  ...    import pkginfo
-  ...    direct = Installed(pkginfo)
-
-After that, they have the same metadata as other ``Distribution`` objects,
-assuming that the package on which they were based has a discoverable
-'.egg-info' file / directory.  To be discoverable, the '.egg-info' must
-either be located inside the package (e.g., created via ``setup.py develop``
-under setuptools), or adjacent to the package (e.g., created via
-``setup.py instlall``).
+``Installed`` objects are created from an installed directory path.
+Note that this feature is best used with importlib_metadata instead.
 
 
 Introspecting Development Checkouts

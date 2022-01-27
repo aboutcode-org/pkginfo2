@@ -1,5 +1,12 @@
-``pkginfo`` Changelog
+``pkginfo2`` Changelog
 =====================
+
+30.0.0 (2022-01-28)
+------------------
+
+- Forked and rename to pkginfo2. Removed ability to import or eval packages
+  or modules.
+
 
 1.8.2 (2021-12-01)
 ------------------

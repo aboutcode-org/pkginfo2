@@ -1,4 +1,4 @@
-:mod:`pkginfo` documentation
+:mod:`pkginfo2` documentation
 ============================
 
 This package provides an API for querying the distutils metadata written in

@@ -1,14 +1,11 @@
-<<<<<<< HEAD
 *.py[cod]
-=======
->>>>>>> refs/remotes/bzr-import/master
 *.egg-info
 ./build
 ./dist
 .coverage
 __pycache__
 .tox
-coverage.xml
-nosetests.xml
 docs/_build
 /venv/
+dist
+build
