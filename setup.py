@@ -17,6 +17,7 @@ setup(
     description='Query metadatdata from sdists / bdists / installed packages. Safer fork of pkginfo to avoid doing arbitrary imports and eval()',
     platforms=['Unix', 'Windows'],
     long_description='\n\n'.join([README, CHANGES]),
+    long_description_content_type= 'text/x-rst',
     keywords='distribution sdist installed metadata',
     url='https://github.com/nexB/pkginfo2',
     author='Maintained by nexB, Inc. Authored by Tres Seaver, Agendaless Consulting',

@@ -1,5 +1,5 @@
 ``pkginfo2`` README
-==================
+=====================
 
 Homepage URL: https://github.com/nexB/pkginfo2
 SPDX-License-Identifier: MIT
