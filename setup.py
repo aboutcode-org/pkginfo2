@@ -39,7 +39,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'pkginfo2 = pkginfo.2commandline:main',
+            'pkginfo2 = pkginfo2.commandline:main',
         ]
     },
     packages=['pkginfo2', 'pkginfo2.tests'],
