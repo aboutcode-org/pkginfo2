@@ -129,7 +129,11 @@ class Distribution(object):
         raise NotImplementedError
 
     def _getHeaderAttrs(self):
-        return HEADER_ATTRS.get(self.metadata_version, [])
+        if self.metadata_version in HEADER_ATTRS:
+            return HEADER_ATTRS[self.metadata_version]
+        else:
+            # If the specific version is not available, use the latest version
+            return HEADER_ATTRS[HEADER_ATTRS.keys()[-1]]
 
     def parse(self, data):
         fp = StringIO(must_decode(data))
