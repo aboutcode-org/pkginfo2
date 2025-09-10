@@ -1,7 +1,7 @@
 ``pkginfo2`` README
 =====================
 
-Homepage URL: https://github.com/nexB/pkginfo2
+Homepage URL: https://github.com/aboutcode-org/pkginfo2
 SPDX-License-Identifier: MIT
 
 This package provides an API for querying the distutils metadata written in
@@ -17,5 +17,5 @@ ability to import and eval arbitrary code and work with modules known to the
 current interpreter. Use importlib_metadata for this if you need it.
 
 
-Please see the `pkginfo2 repo at <https://github.com/nexB/pkginfo2>`_
+Please see the `pkginfo2 repo at <https://github.com/aboutcode-org/pkginfo2>`_
 for more documentation.
