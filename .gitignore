@@ -9,3 +9,4 @@ docs/_build
 /venv/
 dist
 build
+/.pytest_cache/
