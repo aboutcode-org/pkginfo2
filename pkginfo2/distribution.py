@@ -67,6 +67,11 @@ HEADER_ATTRS_2_2 = HEADER_ATTRS_2_1 + ( # PEP 643
     ('Dynamic', 'dynamic', True),
 )
 
+HEADER_ATTRS_2_4 = HEADER_ATTRS_2_2 + ( # PEP 639
+    ('License-Expression', 'license_expression', False),
+    ('License-Files', 'license_files', True),
+)
+
 HEADER_ATTRS = {
     '1.0': HEADER_ATTRS_1_0,
     '1.1': HEADER_ATTRS_1_1,
@@ -74,6 +79,8 @@ HEADER_ATTRS = {
     '2.0': HEADER_ATTRS_2_0,
     '2.1': HEADER_ATTRS_2_1,
     '2.2': HEADER_ATTRS_2_2,
+    '2.3': HEADER_ATTRS_2_2,
+    '2.4': HEADER_ATTRS_2_4,
 }
 
 class Distribution(object):
@@ -110,6 +117,9 @@ class Distribution(object):
     description_content_type = None
     # version 2.2
     dynamic = ()
+    # version 2.4
+    license_expression = None
+    license_files = ()
 
     def extractMetadata(self):
         data = self.read()
@@ -119,7 +129,11 @@ class Distribution(object):
         raise NotImplementedError
 
     def _getHeaderAttrs(self):
-        return HEADER_ATTRS.get(self.metadata_version, [])
+        if self.metadata_version in HEADER_ATTRS:
+            return HEADER_ATTRS[self.metadata_version]
+        else:
+            # If the specific version is not available, use the latest version
+            return HEADER_ATTRS[HEADER_ATTRS.keys()[-1]]
 
     def parse(self, data):
         fp = StringIO(must_decode(data))
