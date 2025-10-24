@@ -16,6 +16,5 @@ This is a fork of http://bazaar.launchpad.net/~tseaver/pkginfo removing the
 ability to import and eval arbitrary code and work with modules known to the
 current interpreter. Use importlib_metadata for this if you need it.
 
-
 Please see the `pkginfo2 repo at <https://github.com/aboutcode-org/pkginfo2>`_
 for more documentation.
