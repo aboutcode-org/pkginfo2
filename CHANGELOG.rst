@@ -213,7 +213,7 @@
 
 - Fix bug in introspection of installed packages missing the
   ``__package__`` attribute.
-  
+
 
 0.7 (2010-11-04)
 ----------------

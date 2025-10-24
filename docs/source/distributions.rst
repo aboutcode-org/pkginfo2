@@ -30,7 +30,7 @@ distutils:
 
 .. doctest::
 
-  >>> mypackage = SDist('docs/examples/mypackage-0.1.tar.gz')
+  >>> mypackage = SDist('tests/examples/mypackage-0.1.tar.gz')
 
 After creation, the ``SDist`` instance will have attributes corrsponding
 the the fields defined in the PEP corresponding to the metadata version,
@@ -75,10 +75,10 @@ setup.py at the top level:
 
 .. doctest::
 
-  >>> mypackage = UnpackedSDist('docs/examples/mypackage-0.1')
+  >>> mypackage = UnpackedSDist('tests/examples/mypackage-0.1')
   >>> print(mypackage.name)
   mypackage
-  >>> myotherpackage = UnpackedSDist('docs/examples/mypackage-0.1/setup.py')
+  >>> myotherpackage = UnpackedSDist('tests/examples/mypackage-0.1/setup.py')
   >>> print(myotherpackage.name)
   mypackage
 
@@ -110,7 +110,7 @@ generated via ``setup.py bdist_egg``.
 
 .. doctest::
 
-  >>> mypackage = BDist('docs/examples/mypackage-0.1-py2.6.egg')
+  >>> mypackage = BDist('tests/examples/mypackage-0.1-py2.6.egg')
 
 After that, they have the same metadata as other ``Distribution`` objects,
 
@@ -122,7 +122,7 @@ generated via ``setup.py bdist_wheel``.
 
 .. doctest::
 
-  >>> mypackage = Wheel('docs/examples/mypackage-0.1-cp26-none-linux_x86_64.whl')
+  >>> mypackage = Wheel('tests/examples/mypackage-0.1-cp26-none-linux_x86_64.whl')
 
 After that, they have the same metadata as other ``Distribution`` objects,
 

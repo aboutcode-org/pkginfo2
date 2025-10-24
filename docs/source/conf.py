@@ -17,9 +17,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = "nexb-skeleton"
-copyright = "nexB Inc., AboutCode and others."
-author = "AboutCode.org authors and contributors"
+project = "pkginfo2"
+copyright = "2009-2013, Tres Seaver"
+author = "Tres Seaver, AboutCode.org authors and contributors"
 
 
 # -- General configuration ---------------------------------------------------
@@ -34,6 +34,8 @@ extensions = [
     "sphinx_rtd_dark_mode",
     "sphinx.ext.extlinks",
     "sphinx_copybutton",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.doctest",
 ]
 
 
@@ -115,3 +117,6 @@ rst_prolog = """
 # -- Options for LaTeX output -------------------------------------------------
 
 latex_elements = {"classoptions": ",openany,oneside"}
+latex_documents = [
+    ("index", "pkginfo.tex", "pkginfo Documentation", "Tres Seaver", "manual"),
+]

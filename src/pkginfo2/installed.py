@@ -8,7 +8,6 @@ from .distribution import Distribution
 
 
 class Installed(Distribution):
-
     def __init__(self, package, metadata_version=None):
         self.package = package
         _, self.package_name = os.path.split(package)
@@ -21,12 +20,21 @@ class Installed(Distribution):
         opj = os.path.join
 
         for candidate in os.listdir(self.package):
-            if not candidate.endswith(('.dist-info', '.egg-info', 'EGG-INFO',)):
+            if not candidate.endswith(
+                (
+                    ".dist-info",
+                    ".egg-info",
+                    "EGG-INFO",
+                )
+            ):
                 continue
             candidate = opj(self.package, candidate)
 
-            for metafile in ('METADATA', 'PKG-INFO'):
-                content = get_content(candidate, metafile=metafile,)
+            for metafile in ("METADATA", "PKG-INFO"):
+                content = get_content(
+                    candidate,
+                    metafile=metafile,
+                )
                 if content is not None:
                     return content
 
@@ -39,5 +47,5 @@ def get_content(candidate, metafile):
     else:
         return
 
-    with io.open(path, errors='ignore') as f:
+    with io.open(path, errors="ignore") as f:
         return f.read()

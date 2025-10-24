@@ -2,10 +2,11 @@ import shutil
 import tempfile
 import unittest
 
-class SDistTests(unittest.TestCase):
 
+class SDistTests(unittest.TestCase):
     def _getTargetClass(self):
         from pkginfo2.sdist import SDist
+
         return SDist
 
     def _makeOne(self, filename=None, metadata_version=None):
@@ -15,95 +16,108 @@ class SDistTests(unittest.TestCase):
 
     def _checkSample(self, sdist, filename):
         self.assertEqual(sdist.filename, filename)
-        self.assertEqual(sdist.name, 'mypackage')
-        self.assertEqual(sdist.version, '0.1')
+        self.assertEqual(sdist.name, "mypackage")
+        self.assertEqual(sdist.version, "0.1")
         self.assertEqual(sdist.keywords, None)
         self.assertEqual(list(sdist.supported_platforms), [])
 
     def _checkClassifiers(self, sdist):
-        self.assertEqual(list(sdist.classifiers),
-                         ['Development Status :: 4 - Beta',
-                          'Environment :: Console (Text Based)',
-                         ])
+        self.assertEqual(
+            list(sdist.classifiers),
+            [
+                "Development Status :: 4 - Beta",
+                "Environment :: Console (Text Based)",
+            ],
+        )
 
     def test_ctor_w_invalid_filename(self):
         import os
+
         d, _ = os.path.split(__file__)
-        filename = '%s/../../docs/examples/nonesuch-0.1.tar.gz' % d
+        filename = "%s/../../tests/examples/nonesuch-0.1.tar.gz" % d
         self.assertRaises(ValueError, self._makeOne, filename)
 
     def test_ctor_wo_PKG_INFO(self):
         import os
+
         d, _ = os.path.split(__file__)
-        filename = '%s/../../docs/examples/nopkginfo-0.1.zip' % d
+        filename = "%s/../../tests/examples/nopkginfo-0.1.zip" % d
         self.assertRaises(ValueError, self._makeOne, filename)
 
     def test_ctor_w_tar(self):
         import os
+
         d, _ = os.path.split(__file__)
-        filename = '%s/../../docs/examples/mypackage-0.1.tar' % d
+        filename = "%s/../../tests/examples/mypackage-0.1.tar" % d
         sdist = self._makeOne(filename)
-        self.assertEqual(sdist.metadata_version, '1.0')
+        self.assertEqual(sdist.metadata_version, "1.0")
         self._checkSample(sdist, filename)
 
     def test_ctor_w_gztar(self):
         import os
+
         d, _ = os.path.split(__file__)
-        filename = '%s/../../docs/examples/mypackage-0.1.tar.gz' % d
+        filename = "%s/../../tests/examples/mypackage-0.1.tar.gz" % d
         sdist = self._makeOne(filename)
-        self.assertEqual(sdist.metadata_version, '1.0')
+        self.assertEqual(sdist.metadata_version, "1.0")
         self._checkSample(sdist, filename)
 
     def test_ctor_w_gztar_and_metadata_version(self):
         import os
+
         d, _ = os.path.split(__file__)
-        filename = '%s/../../docs/examples/mypackage-0.1.tar.gz' % d
-        sdist = self._makeOne(filename, metadata_version='1.1')
+        filename = "%s/../../tests/examples/mypackage-0.1.tar.gz" % d
+        sdist = self._makeOne(filename, metadata_version="1.1")
         self._checkSample(sdist, filename)
-        self.assertEqual(sdist.metadata_version, '1.1')
+        self.assertEqual(sdist.metadata_version, "1.1")
         self._checkClassifiers(sdist)
 
     def test_ctor_w_bztar(self):
         import os
+
         d, _ = os.path.split(__file__)
-        filename = '%s/../../docs/examples/mypackage-0.1.tar.bz2' % d
+        filename = "%s/../../tests/examples/mypackage-0.1.tar.bz2" % d
         sdist = self._makeOne(filename)
-        self.assertEqual(sdist.metadata_version, '1.0')
+        self.assertEqual(sdist.metadata_version, "1.0")
         self._checkSample(sdist, filename)
 
     def test_ctor_w_bztar_and_metadata_version(self):
         import os
+
         d, _ = os.path.split(__file__)
-        filename = '%s/../../docs/examples/mypackage-0.1.tar.bz2' % d
-        sdist = self._makeOne(filename, metadata_version='1.1')
-        self.assertEqual(sdist.metadata_version, '1.1')
+        filename = "%s/../../tests/examples/mypackage-0.1.tar.bz2" % d
+        sdist = self._makeOne(filename, metadata_version="1.1")
+        self.assertEqual(sdist.metadata_version, "1.1")
         self._checkSample(sdist, filename)
         self._checkClassifiers(sdist)
 
     def test_ctor_w_zip(self):
         import os
+
         d, _ = os.path.split(__file__)
-        filename = '%s/../../docs/examples/mypackage-0.1.zip' % d
+        filename = "%s/../../tests/examples/mypackage-0.1.zip" % d
         sdist = self._makeOne(filename)
-        self.assertEqual(sdist.metadata_version, '1.0')
+        self.assertEqual(sdist.metadata_version, "1.0")
         self._checkSample(sdist, filename)
 
     def test_ctor_w_zip_and_metadata_version(self):
         import os
+
         d, _ = os.path.split(__file__)
-        filename = '%s/../../docs/examples/mypackage-0.1.zip' % d
-        sdist = self._makeOne(filename, metadata_version='1.1')
-        self.assertEqual(sdist.metadata_version, '1.1')
+        filename = "%s/../../tests/examples/mypackage-0.1.zip" % d
+        sdist = self._makeOne(filename, metadata_version="1.1")
+        self.assertEqual(sdist.metadata_version, "1.1")
         self._checkSample(sdist, filename)
         self._checkClassifiers(sdist)
 
     def test_ctor_w_bogus(self):
         import os
+
         d, _ = os.path.split(__file__)
-        filename = '%s/../../docs/examples/mypackage-0.1.bogus' % d
+        filename = "%s/../../tests/examples/mypackage-0.1.bogus" % d
 
         with self.assertRaises(ValueError):
-            self._makeOne(filename, metadata_version='1.1')
+            self._makeOne(filename, metadata_version="1.1")
 
 
 class UnpackedMixin(object):
@@ -117,10 +131,12 @@ class UnpackedMixin(object):
 
     def _getTargetClass(self):
         from pkginfo2.sdist import UnpackedSDist
+
         return UnpackedSDist
 
     def _getTopDirectory(self):
         import os
+
         topnames = os.listdir(self.__tmpdir)
         if len(topnames) == 1:
             return os.path.join(self.__tmpdir, topnames[0])
@@ -131,7 +147,6 @@ class UnpackedMixin(object):
         return self._getTopDirectory()
 
     def _makeOne(self, filename=None, metadata_version=None):
-
         archive, _, _ = self._getTargetClass()._get_archive(filename)
         try:
             archive.extractall(self.__tmpdir)
@@ -152,7 +167,9 @@ class UnpackedMixin(object):
 class UnpackedSDistGivenDirectoryTests(UnpackedMixin, SDistTests):
     pass
 
+
 class UnpackedSDistGivenFileSDistTests(UnpackedMixin, SDistTests):
     def _getLoadFilename(self):
         import os
-        return os.path.join(self._getTopDirectory(), 'setup.py')
+
+        return os.path.join(self._getTopDirectory(), "setup.py")

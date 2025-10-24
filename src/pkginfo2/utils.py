@@ -5,8 +5,10 @@ from .develop import Develop
 from .sdist import SDist
 from .wheel import Wheel
 
+
 def get_metadata(path_or_module, metadata_version=None):
-    """ Try to create a Distribution 'path_or_module'.
+    """
+    Try to create a Distribution 'path_or_module'.
 
     o 'path_or_module' may be a module object.
 
@@ -24,21 +26,21 @@ def get_metadata(path_or_module, metadata_version=None):
 
         try:
             return BDist(path_or_module, metadata_version)
-        except (ValueError, IOError): #pragma NO COVER
+        except (ValueError, IOError):  # pragma NO COVER
             pass
 
         try:
             return Wheel(path_or_module, metadata_version)
-        except (ValueError, IOError): #pragma NO COVER
+        except (ValueError, IOError):  # pragma NO COVER
             pass
 
     if os.path.isdir(path_or_module):
         try:
             return Wheel(path_or_module, metadata_version)
-        except (ValueError, IOError): #pragma NO COVER
+        except (ValueError, IOError):  # pragma NO COVER
             pass
 
         try:
             return Develop(path_or_module, metadata_version)
-        except (ValueError, IOError): #pragma NO COVER
+        except (ValueError, IOError):  # pragma NO COVER
             pass

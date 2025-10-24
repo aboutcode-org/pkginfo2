@@ -19,7 +19,7 @@ which were not defined under version '1.0':
 .. doctest::
 
   >>> from pkginfo import SDist
-  >>> mypackage = SDist('docs/examples/mypackage-0.1.tar.gz',
+  >>> mypackage = SDist('tests/examples/mypackage-0.1.tar.gz',
   ...                   metadata_version='1.1')
   >>> print([str(x) for x in mypackage.classifiers])
   ['Development Status :: 4 - Beta', 'Environment :: Console (Text Based)']
