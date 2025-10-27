@@ -1,6 +1,13 @@
 ``pkginfo2`` Changelog
 =======================
 
+30.1.0 (2025-08-27)
+--------------------
+
+- Fixes entrypoint module name typo
+- Added aboutcode-org/skeleton files and restructured modules
+- Enabled tests in Github actions/azure pipelines
+
 30.0.0 (2022-01-28)
 --------------------
 
