@@ -29,7 +29,7 @@ class Test_get_metadata(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1.tar.gz" % d
+        filename = "%s/../tests/examples/mypackage-0.1.tar.gz" % d
         dist = self._callFUT(filename)
         self.assertEqual(dist.metadata_version, "1.0")
         self._checkMyPackage(dist, filename)
@@ -38,7 +38,7 @@ class Test_get_metadata(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1.tar.gz" % d
+        filename = "%s/../tests/examples/mypackage-0.1.tar.gz" % d
         dist = self._callFUT(filename, metadata_version="1.1")
         self.assertEqual(dist.metadata_version, "1.1")
         self._checkMyPackage(dist, filename)
@@ -48,7 +48,7 @@ class Test_get_metadata(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1.tar.bz2" % d
+        filename = "%s/../tests/examples/mypackage-0.1.tar.bz2" % d
         dist = self._callFUT(filename)
         self.assertEqual(dist.metadata_version, "1.0")
         self._checkMyPackage(dist, filename)
@@ -57,7 +57,7 @@ class Test_get_metadata(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1.tar.bz2" % d
+        filename = "%s/../tests/examples/mypackage-0.1.tar.bz2" % d
         dist = self._callFUT(filename, metadata_version="1.1")
         self.assertEqual(dist.metadata_version, "1.1")
         self._checkMyPackage(dist, filename)
@@ -67,7 +67,7 @@ class Test_get_metadata(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1.zip" % d
+        filename = "%s/../tests/examples/mypackage-0.1.zip" % d
         dist = self._callFUT(filename)
         self.assertEqual(dist.metadata_version, "1.0")
         self._checkMyPackage(dist, filename)
@@ -76,7 +76,7 @@ class Test_get_metadata(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1.zip" % d
+        filename = "%s/../tests/examples/mypackage-0.1.zip" % d
         dist = self._callFUT(filename, metadata_version="1.1")
         self.assertEqual(dist.metadata_version, "1.1")
         self._checkMyPackage(dist, filename)
@@ -86,7 +86,7 @@ class Test_get_metadata(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1-py2.6.egg" % d
+        filename = "%s/../tests/examples/mypackage-0.1-py2.6.egg" % d
         dist = self._callFUT(filename)
         self.assertEqual(dist.metadata_version, "1.0")
         self._checkMyPackage(dist, filename)
@@ -95,7 +95,7 @@ class Test_get_metadata(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1-py2.6.egg" % d
+        filename = "%s/../tests/examples/mypackage-0.1-py2.6.egg" % d
         dist = self._callFUT(filename, metadata_version="1.1")
         self.assertEqual(dist.metadata_version, "1.1")
         self._checkMyPackage(dist, filename)
@@ -105,7 +105,7 @@ class Test_get_metadata(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = ("%s/../../tests/examples/mypackage-0.1-cp26-none-linux_x86_64.whl") % d
+        filename = ("%s/../tests/examples/mypackage-0.1-cp26-none-linux_x86_64.whl") % d
         dist = self._callFUT(filename)
         self.assertEqual(dist.metadata_version, "2.0")
         self._checkMyPackage(dist, filename)
@@ -114,7 +114,7 @@ class Test_get_metadata(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = ("%s/../../tests/examples/mypackage-0.1-cp26-none-linux_x86_64.whl") % d
+        filename = ("%s/../tests/examples/mypackage-0.1-cp26-none-linux_x86_64.whl") % d
         dist = self._callFUT(filename, metadata_version="1.1")
         self.assertEqual(dist.metadata_version, "1.1")
         self._checkMyPackage(dist, filename)

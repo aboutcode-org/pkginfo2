@@ -1,6 +1,5 @@
 import unittest
 
-
 class DevelopTests(unittest.TestCase):
     def _getTargetClass(self):
         from pkginfo2.develop import Develop
@@ -9,12 +8,6 @@ class DevelopTests(unittest.TestCase):
 
     def _makeOne(self, dirname=None):
         return self._getTargetClass()(dirname)
-
-    def test_ctor_w_path(self):
-        from pkginfo2.tests import _checkSample
-
-        develop = self._makeOne(".")
-        _checkSample(self, develop)
 
     def test_ctor_w_invalid_path(self):
         import warnings

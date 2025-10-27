@@ -34,21 +34,21 @@ class SDistTests(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/nonesuch-0.1.tar.gz" % d
+        filename = "%s/../tests/examples/nonesuch-0.1.tar.gz" % d
         self.assertRaises(ValueError, self._makeOne, filename)
 
     def test_ctor_wo_PKG_INFO(self):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/nopkginfo-0.1.zip" % d
+        filename = "%s/../tests/examples/nopkginfo-0.1.zip" % d
         self.assertRaises(ValueError, self._makeOne, filename)
 
     def test_ctor_w_tar(self):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1.tar" % d
+        filename = "%s/../tests/examples/mypackage-0.1.tar" % d
         sdist = self._makeOne(filename)
         self.assertEqual(sdist.metadata_version, "1.0")
         self._checkSample(sdist, filename)
@@ -57,7 +57,7 @@ class SDistTests(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1.tar.gz" % d
+        filename = "%s/../tests/examples/mypackage-0.1.tar.gz" % d
         sdist = self._makeOne(filename)
         self.assertEqual(sdist.metadata_version, "1.0")
         self._checkSample(sdist, filename)
@@ -66,7 +66,7 @@ class SDistTests(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1.tar.gz" % d
+        filename = "%s/../tests/examples/mypackage-0.1.tar.gz" % d
         sdist = self._makeOne(filename, metadata_version="1.1")
         self._checkSample(sdist, filename)
         self.assertEqual(sdist.metadata_version, "1.1")
@@ -76,7 +76,7 @@ class SDistTests(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1.tar.bz2" % d
+        filename = "%s/../tests/examples/mypackage-0.1.tar.bz2" % d
         sdist = self._makeOne(filename)
         self.assertEqual(sdist.metadata_version, "1.0")
         self._checkSample(sdist, filename)
@@ -85,7 +85,7 @@ class SDistTests(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1.tar.bz2" % d
+        filename = "%s/../tests/examples/mypackage-0.1.tar.bz2" % d
         sdist = self._makeOne(filename, metadata_version="1.1")
         self.assertEqual(sdist.metadata_version, "1.1")
         self._checkSample(sdist, filename)
@@ -95,7 +95,7 @@ class SDistTests(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1.zip" % d
+        filename = "%s/../tests/examples/mypackage-0.1.zip" % d
         sdist = self._makeOne(filename)
         self.assertEqual(sdist.metadata_version, "1.0")
         self._checkSample(sdist, filename)
@@ -104,7 +104,7 @@ class SDistTests(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1.zip" % d
+        filename = "%s/../tests/examples/mypackage-0.1.zip" % d
         sdist = self._makeOne(filename, metadata_version="1.1")
         self.assertEqual(sdist.metadata_version, "1.1")
         self._checkSample(sdist, filename)
@@ -114,7 +114,7 @@ class SDistTests(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1.bogus" % d
+        filename = "%s/../tests/examples/mypackage-0.1.bogus" % d
 
         with self.assertRaises(ValueError):
             self._makeOne(filename, metadata_version="1.1")

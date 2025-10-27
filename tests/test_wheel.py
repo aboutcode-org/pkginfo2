@@ -32,28 +32,28 @@ class WheelTests(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/nonesuch-0.1-any.whl" % d
+        filename = "%s/../tests/examples/nonesuch-0.1-any.whl" % d
         self.assertRaises(ValueError, self._makeOne, filename)
 
     def test_ctor_w_non_wheel(self):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1.zip" % d
+        filename = "%s/../tests/examples/mypackage-0.1.zip" % d
         self.assertRaises(ValueError, self._makeOne, filename)
 
     def test_ctor_wo_dist_info(self):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/nodistinfo-0.1-any.whl" % d
+        filename = "%s/../tests/examples/nodistinfo-0.1-any.whl" % d
         self.assertRaises(ValueError, self._makeOne, filename)
 
     def test_ctor_w_valid_wheel(self):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = ("%s/../../tests/examples/mypackage-0.1-cp26-none-linux_x86_64.whl") % d
+        filename = ("%s/../tests/examples/mypackage-0.1-cp26-none-linux_x86_64.whl") % d
         wheel = self._makeOne(filename)
         self.assertEqual(wheel.metadata_version, "2.0")
         self._checkSample(wheel, filename)
@@ -63,7 +63,7 @@ class WheelTests(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = ("%s/../../tests/examples/mypackage-0.1.dist-info") % d
+        filename = ("%s/../tests/examples/mypackage-0.1.dist-info") % d
         wheel = self._makeOne(filename)
         self.assertEqual(wheel.metadata_version, "2.0")
         self._checkSample(wheel, filename)
@@ -73,7 +73,7 @@ class WheelTests(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = ("%s/../../tests/examples/mypackage-0.1-cp26-none-linux_x86_64.whl") % d
+        filename = ("%s/../tests/examples/mypackage-0.1-cp26-none-linux_x86_64.whl") % d
         wheel = self._makeOne(filename, metadata_version="1.1")
         self.assertEqual(wheel.metadata_version, "1.1")
         self._checkSample(wheel, filename)
@@ -83,7 +83,7 @@ class WheelTests(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = ("%s/../../tests/examples/distlib-0.3.1-py2.py3-none-any.whl") % d
+        filename = ("%s/../tests/examples/distlib-0.3.1-py2.py3-none-any.whl") % d
         wheel = self._makeOne(filename, metadata_version="1.1")
         self.assertEqual(wheel.metadata_version, "1.1")
         self.assertTrue(wheel.description)
@@ -95,7 +95,7 @@ class WheelTests(unittest.TestCase):
         import zipfile
 
         d, _ = os.path.split(__file__)
-        filename = ("%s/../../tests/examples/mypackage-0.1-cp26-none-linux_x86_64.whl") % d
+        filename = ("%s/../tests/examples/mypackage-0.1-cp26-none-linux_x86_64.whl") % d
 
         try:
             # note: we mock a wheel installation by unzipping

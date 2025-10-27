@@ -21,7 +21,7 @@ jobs:
           image_name: ubuntu-22.04
           python_versions: ['3.10', '3.11', '3.12', '3.13', '3.14']
           test_suites:
-              all: venv/bin/pytest -n 2 -vvs
+              all: venv/bin/pytest -n 2 -vvs .  --ignore=tests/examples/ --ignore=tests/wonky/
 
     - template: etc/ci/azure-posix.yml
       parameters:
@@ -29,7 +29,7 @@ jobs:
           image_name: ubuntu-24.04
           python_versions: ['3.10', '3.11', '3.12', '3.13', '3.14']
           test_suites:
-              all: venv/bin/pytest -n 2 -vvs
+              all: venv/bin/pytest -n 2 -vvs . --ignore=tests/examples/ --ignore=tests/wonky/
 
     - template: etc/ci/azure-posix.yml
       parameters:
@@ -37,7 +37,7 @@ jobs:
           image_name: macOS-13
           python_versions: ['3.10', '3.11', '3.12', '3.13', '3.14']
           test_suites:
-              all: venv/bin/pytest -n 2 -vvs
+              all: venv/bin/pytest -n 2 -vvs . --ignore=tests/examples/ --ignore=tests/wonky/
 
     - template: etc/ci/azure-posix.yml
       parameters:
@@ -45,7 +45,7 @@ jobs:
           image_name: macOS-14
           python_versions: ['3.10', '3.11', '3.12', '3.13', '3.14']
           test_suites:
-              all: venv/bin/pytest -n 2 -vvs
+              all: venv/bin/pytest -n 2 -vvs . --ignore=tests/examples/ --ignore=tests/wonky/
 
     - template: etc/ci/azure-posix.yml
       parameters:
@@ -53,7 +53,7 @@ jobs:
           image_name: macOS-15
           python_versions: ['3.10', '3.11', '3.12', '3.13', '3.14']
           test_suites:
-              all: venv/bin/pytest -n 2 -vvs
+              all: venv/bin/pytest -n 2 -vvs . --ignore=tests/examples/ --ignore=tests/wonky/
 
     - template: etc/ci/azure-win.yml
       parameters:
@@ -61,7 +61,7 @@ jobs:
           image_name: windows-2022
           python_versions: ['3.10', '3.11', '3.12', '3.13', '3.14']
           test_suites:
-              all: venv\Scripts\pytest -n 2 -vvs
+              all: venv\Scripts\pytest -n 2 -vvs . --ignore=tests/examples/ --ignore=tests/wonky/
 
     - template: etc/ci/azure-win.yml
       parameters:
@@ -69,4 +69,4 @@ jobs:
           image_name: windows-2025
           python_versions: ['3.10', '3.11', '3.12', '3.13', '3.14']
           test_suites:
-              all: venv\Scripts\pytest -n 2 -vvs
+              all: venv\Scripts\pytest -n 2 -vvs . --ignore=tests/examples/ --ignore=tests/wonky/

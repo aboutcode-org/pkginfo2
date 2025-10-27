@@ -32,28 +32,28 @@ class BDistTests(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/nonesuch-0.1-py2.6.egg" % d
+        filename = "%s/../tests/examples/nonesuch-0.1-py2.6.egg" % d
         self.assertRaises(ValueError, self._makeOne, filename)
 
     def test_ctor_w_non_egg(self):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1.zip" % d
+        filename = "%s/../tests/examples/mypackage-0.1.zip" % d
         self.assertRaises(ValueError, self._makeOne, filename)
 
     def test_ctor_wo_PKG_INFO(self):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/nopkginfo-0.1.egg" % d
+        filename = "%s/../tests/examples/nopkginfo-0.1.egg" % d
         self.assertRaises(ValueError, self._makeOne, filename)
 
     def test_ctor_w_egg(self):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1-py2.6.egg" % d
+        filename = "%s/../tests/examples/mypackage-0.1-py2.6.egg" % d
         bdist = self._makeOne(filename)
         self.assertEqual(bdist.metadata_version, "1.0")
         self._checkSample(bdist, filename)
@@ -62,7 +62,7 @@ class BDistTests(unittest.TestCase):
         import os
 
         d, _ = os.path.split(__file__)
-        filename = "%s/../../tests/examples/mypackage-0.1-py2.6.egg" % d
+        filename = "%s/../tests/examples/mypackage-0.1-py2.6.egg" % d
         bdist = self._makeOne(filename, metadata_version="1.1")
         self.assertEqual(bdist.metadata_version, "1.1")
         self._checkSample(bdist, filename)
