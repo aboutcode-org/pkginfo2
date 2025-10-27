@@ -63,7 +63,7 @@ with no occurences in the ``PKG-INFO`` file will map onto an empty sequence:
   >>> print(list(mypackage.supported_platforms))
   []
 
-See `Metadata Versions <metadata.html>`_ for an example with a non-empty,
+See :ref:`metadata-versions` for an example with a non-empty,
 "multiple-use" field.
 
 Introspecting Unpacked Source Distributions

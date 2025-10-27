@@ -1,3 +1,5 @@
+.. _metadata-versions:
+
 Metadata Versions
 =================
 

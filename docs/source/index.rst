@@ -13,6 +13,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   contribute/contrib_doc
    distributions
    metadata
    indexes
